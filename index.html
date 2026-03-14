@@ -3,181 +3,378 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Analyst Portfolio | 3 Years Experience</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Ahmed Nasser - Data Analyst Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
-            --accent-blue: #38bdf8;
-            --text-main: #f1f5f9;
-            --text-dim: #94a3b8;
+            --primary-blue: #0056b3; /* Professional blue for accent */
+            --light-bg: #ffffff;
+            --section-bg: #f8f9fa; /* Slightly off-white for distinction */
+            --border-color: #dee2e6;
+            --text-dark: #212529;
+            --text-muted: #6c757d;
+        }
+
+        * {
+            box-sizing: border-box;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-dark);
             margin: 0;
             line-height: 1.6;
-        }
-
-        header {
-            text-align: center;
-            padding: 5rem 1rem;
-            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
         }
 
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 20px;
+        }
+
+        /* --- Header / Hero Section --- */
+        header {
+            background: var(--light-bg);
+            padding: 100px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--border-color);
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin: 0 0 10px 0;
+            color: var(--text-dark);
+        }
+
+        header p.title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+            margin: 0 0 15px 0;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .contact-info a {
+            color: var(--primary-blue);
+            text-decoration: none;
+        }
+
+        /* --- Section Styling --- */
+        section {
+            padding: 80px 0;
         }
 
         .section-title {
-            font-size: 2rem;
-            margin-bottom: 2.5rem;
-            border-left: 4px solid var(--accent-blue);
-            padding-left: 1rem;
-        }
-
-        /* Stats/Experience Section */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 4rem;
-        }
-
-        .stat-card {
-            background: var(--card-bg);
-            padding: 1.5rem;
-            border-radius: 12px;
+            font-size: 2.2rem;
+            font-weight: 700;
             text-align: center;
-            border: 1px solid #334155;
-        }
-
-        .stat-card h3 { color: var(--accent-blue); margin: 0; font-size: 1.8rem; }
-
-        /* Certifications Section */
-        .cert-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .cert-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 16px;
-            transition: transform 0.3s ease;
+            margin-bottom: 50px;
             position: relative;
-            overflow: hidden;
-            border: 1px solid #334155;
         }
 
-        .cert-card:hover { transform: translateY(-10px); }
-
-        .cert-badge {
-            background: #0ea5e9;
-            font-size: 0.75rem;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-weight: bold;
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-blue);
+            margin: 15px auto 0;
         }
 
-        .temp-badge {
-            background: #64748b;
-            font-size: 0.75rem;
-            padding: 4px 12px;
-            border-radius: 20px;
+        /* --- Skills Section (Grid) --- */
+        #skills {
+            background-color: var(--section-bg);
         }
 
-        .placeholder-box {
-            width: 100%;
-            height: 180px;
-            background: #334155;
-            margin-top: 1.5rem;
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-group {
+            background: var(--light-bg);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .skill-group:hover {
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .skill-group h3 {
+            border-bottom: 2px solid var(--primary-blue);
+            display: inline-block;
+            margin-bottom: 20px;
+            padding-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-list li {
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            color: var(--text-dim);
-            font-style: italic;
-            border: 2px dashed #475569;
         }
 
-        footer {
+        .skill-list i {
+            color: var(--primary-blue);
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+
+        /* --- Certifications Section (Hidden/Collapsible) --- */
+        #certifications {
+            background-color: var(--light-bg);
             text-align: center;
-            padding: 4rem;
-            color: var(--text-dim);
-            font-size: 0.9rem;
+        }
+
+        .cert-btn {
+            background-color: var(--primary-blue);
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .cert-btn:hover {
+            background-color: #004494;
+        }
+
+        #cert-list {
+            display: none; /* Initially Hidden */
+            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: left;
+        }
+
+        #cert-list.visible {
+            display: grid; /* Becomes grid when visible */
+        }
+
+        .cert-item {
+            background: var(--section-bg);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .cert-icon {
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-right: 20px;
+            margin-top: 5px;
+        }
+
+        .cert-info h4 {
+            margin: 0 0 5px 0;
+            font-size: 1.2rem;
+        }
+
+        .cert-info p {
+            margin: 0;
+            color: var(--text-muted);
+        }
+
+        /* --- Final Footer --- */
+        footer {
+            background-color: var(--section-bg);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .contact-info { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Senior Data Analyst</h1>
-    <p style="color: var(--accent-blue); font-weight: 600;">3+ Years of Experience in Business Intelligence & Python</p>
+    <div class="container">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAEBAREDAREAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc6R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqucpp66596hLW6N259b3P5uL/aAAwDAQACEcom//8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERFRkdISUpTVFVWV1hZWmNkZWZnaGlqc6R1dnd4eXq0hIWGh4iJipKTlJWWl5iZmqucpp66596hLW6N259b3P5uL/2wBDA456+v/8AAEQgCBgIFAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMQAgUGBwgJCgs/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc6R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqucpp66596hLW6N259b3P5uL/2wBDAQUFBQUFBQYFBQYGBQUGBgYFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUF/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERFRkdISUpTVFVWV1hZWmNkZWZnaGlqc6R1dnd4eXq0hIWGh4iJipKTlJWWl5iZmqucpp66596hLW6N259b3P5uL/2wBDAQUFBQUFBQYFBQYGBQUGBgYFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUF/9oADAMBAAIRAxEAPwD5Gooor0jiCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACii6-8" alt="Ahmed Nasser - Professional Data Analyst" class="profile-pic">
+        <h1>Ahmed Nasser</h1>
+        <p class="title">Professional Data Analyst (3+ Years Experience)</p>
+        <div class="contact-info">
+            <span><i class="fas fa-envelope"></i> ahmed.nasser.badri.sayed@gmail.com</span>
+            <span><i class="fab fa-linkedin"></i> <a href="#" target="_blank">linkedin.com/in/yourprofile</a></span>
+        </div>
+    </div>
 </header>
 
 <div class="container">
     
-    <div class="stats-grid">
-        <div class="stat-card"><h3>3+</h3><p>Years Experience</p></div>
-        <div class="stat-card"><h3>50+</h3><p>BI Dashboards</p></div>
-        <div class="stat-card"><h3>SQL</h3><p>Expertise</p></div>
-        <div class="stat-card"><h3>Python</h3><p>Automation</p></div>
-    </div>
+    <section id="about">
+        <h2 class="section-title">Professional Summary</h2>
+        <p style="font-size: 1.2rem; max-width: 800px; margin: 0 auto; text-align: center; color: var(--text-muted);">
+            Highly skilled and detail-oriented Data Analyst with over 3 years of experience in extracting, cleaning, analyzing, and visualizing complex datasets. Proven ability to transform raw data into actionable insights that drive business growth. Expert in leveraging SQL, Python, and BI tools to automate reporting and improve decision-making processes.
+        </p>
+    </section>
 
-    <section>
-        <h2 class="section-title">Professional Certifications</h2>
-        <div class="cert-grid">
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Technical Expertise</h2>
+            <div class="skills-container">
+                
+                <div class="skill-group">
+                    <h3><i class="fas fa-code"></i> Languages & Tools</h3>
+                    <ul class="skill-list">
+                        <li><i class="fab fa-python"></i> Python (Pandas, NumPy, Matplotlib, Seaborn)</li>
+                        <li><i class="fas fa-database"></i> SQL (Complex Queries, CTES, Subqueries, Joins)</li>
+                        <li><i class="fas fa-file-excel"></i> Advanced MS Excel (Pivot Tables, VLOOKUP, Power Query)</li>
+                        <li><i class="fas fa-chart-bar"></i> Power BI & DAX</li>
+                        <li><i class="fas fa-chart-line"></i> Tableau (Desirable)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3><i class="fas fa-vial"></i> Data Processing</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-filter"></i> Data Cleaning (ETL)</li>
+                        <li><i class="fas fa-search"></i> Exploratory Data Analysis (EDA)</li>
+                        <li><i class="fas fa-brain"></i> Statistical Analysis (Descriptive/Inferential)</li>
+                        <li><i class="fas fa-network-wired"></i> Data Modeling</li>
+                        <li><i class="fas fa-bolt"></i> Process Automation (Python Scripts)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-group">
+                    <h3><i class="fas fa-briefcase"></i> Business Reporting</h3>
+                    <ul class="skill-list">
+                        <li><i class="fas fa-tachometer-alt"></i> Dashboard Design</li>
+                        <li><i class="fas fa-crosshairs"></i> KPI Tracking</li>
+                        <li><i class="fas fa-lightbulb"></i> A/B Testing</li>
+                        <li><i class="fas fa-comment"></i> Insight Presentation</li>
+                        <li><i class="fas fa-headset"></i> Cross-functional Collaboration</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Work Experience (3+ Years)</h2>
             
-            <div class="cert-card">
-                <span class="cert-badge">Verified</span>
-                <h3>Google Data Analytics</h3>
-                <p style="color: var(--text-dim)">Professional Certificate | Coursera</p>
-                <div class="placeholder-box">View Certificate Image</div>
+            <div style="background: var(--light-bg); padding: 30px; border-radius: 8px; border: 1px solid var(--border-color); margin-bottom: 30px;">
+                <h3 style="margin-top:0; color:var(--primary-blue);">Senior Data Analyst</h3>
+                <p style="font-style: italic; color: var(--text-muted); margin-bottom: 20px;">[Your Company Name] | [City, Country] | [Date - Present]</p>
+                <ul class="skill-list" style="color: var(--text-muted);">
+                    <li><i class="fas fa-check"></i> Led complex data analysis projects using SQL and Python.</li>
+                    <li><i class="fas fa-check"></i> Built and maintained interactive Power BI dashboards.</li>
+                    <li><i class="fas fa-check"></i> Identified 15% cost savings through automated data reporting.</li>
+                    <li><i class="fas fa-check"></i> Presented findings to C-level executives.</li>
+                </ul>
             </div>
-
-            <div class="cert-card">
-                <span class="cert-badge">Verified</span>
-                <h3>Microsoft Certified: Power BI</h3>
-                <p style="color: var(--text-dim)">Data Analyst Associate (PL-300)</p>
-                <div class="placeholder-box">View Certificate Image</div>
+            
+            <div style="background: var(--light-bg); padding: 30px; border-radius: 8px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color:var(--primary-blue);">Junior Data Analyst</h3>
+                <p style="font-style: italic; color: var(--text-muted); margin-bottom: 20px;">[Your Previous Company Name] | [City, Country] | [Date - Date]</p>
+                <ul class="skill-list" style="color: var(--text-muted);">
+                    <li><i class="fas fa-check"></i> Performed ETL processes on large datasets.</li>
+                    <li><i class="fas fa-check"></i> Supported business decisions with ad-hoc reporting.</li>
+                </ul>
             </div>
+        </div>
+    </section>
 
-            <div class="cert-card">
-                <span class="cert-badge">Verified</span>
-                <h3>Python & SQL Master</h3>
-                <p style="color: var(--text-dim)">Data Science Certification | W3Schools</p>
-                <div class="placeholder-box">View Certificate Image</div>
+    <section id="certifications">
+        <div class="container">
+            <h2 class="section-title">Certifications</h2>
+            
+            <button class="cert-btn" onclick="toggleCertifications()">Show Professional Certifications</button>
+            
+            <div id="cert-list">
+                
+                <div class="cert-item">
+                    <i class="fas fa-certificate cert-icon"></i>
+                    <div class="cert-info">
+                        <h4>Google Data Analytics Professional</h4>
+                        <p>Issued by Coursera</p>
+                    </div>
+                </div>
+
+                <div class="cert-item">
+                    <i class="fas fa-certificate cert-icon"></i>
+                    <div class="cert-info">
+                        <h4>Microsoft Certified: Power BI Data Analyst Associate</h4>
+                        <p>Issued by Microsoft (PL-300)</p>
+                    </div>
+                </div>
+
+                <div class="cert-item">
+                    <i class="fas fa-certificate cert-icon"></i>
+                    <div class="cert-info">
+                        <h4>Python & SQL Certification</h4>
+                        <p>Issued by W3Schools</p>
+                    </div>
+                </div>
+
             </div>
-
-            <div class="cert-card">
-                <span class="temp-badge">Temporary / Processing</span>
-                <h3>Advanced Statistical Modeling</h3>
-                <p style="color: var(--text-dim)">Specialized Workshop</p>
-                <div class="placeholder-box">Proof of Completion</div>
-            </div>
-
-            <div class="cert-card">
-                <span class="temp-badge">Temporary / Processing</span>
-                <h3>Cloud Data Engineering</h3>
-                <p style="color: var(--text-dim)">Coursework Overview</p>
-                <div class="placeholder-box">Proof of Completion</div>
-            </div>
-
         </div>
     </section>
 
 </div>
 
 <footer>
-    <p>© 2026 | Professional Portfolio | Built with HTML & CSS</p>
+    <div class="container">
+        <p>&copy; 2026 | Ahmed Nasser Badri Sayed. All Rights Reserved.</p>
+        <p>Built with Passion | HTML & CSS</p>
+    </div>
 </footer>
+
+<script>
+    function toggleCertifications() {
+        var certList = document.getElementById("cert-list");
+        var certBtn = document.querySelector(".cert-btn");
+
+        if (certList.classList.contains("visible")) {
+            certList.classList.remove("visible");
+            certBtn.innerHTML = "Show Professional Certifications";
+        } else {
+            certList.classList.add("visible");
+            certBtn.innerHTML = "Hide Certifications";
+        }
+    }
+</script>
 
 </body>
 </html>
