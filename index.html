@@ -7,12 +7,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* إعدادات الألوان من الـ CV */
         :root {
-            --dark-header: #333333; /* الرمادي الغامق من الهيدر */
-            --light-gray: #C4C4C4;  /* الرمادي الفاتح من الخلفية اليسرى */
+            --dark-header: #333333; 
+            --light-gray: #C4C4C4;  
             --text-main: #2d2d2d;
-            --accent-color: #555555;
+            --accent-gray: #f4f4f4;
             --white: #ffffff;
         }
 
@@ -24,16 +23,15 @@
             color: var(--text-main);
             margin: 0;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        /* --- Header: نفس روح الـ CV --- */
+        /* --- Header --- */
         header {
             background-color: var(--dark-header);
             color: white;
             padding: 80px 20px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
         }
 
         .profile-pic {
@@ -41,135 +39,85 @@
             height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 8px solid rgba(255,255,255,0.1);
+            border: 6px solid rgba(255,255,255,0.2);
             margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            /* للتأكد من ظهور الصورة إذا كان المسار صحيحاً */
+            display: inline-block;
         }
 
-        header h1 {
-            font-size: 3.5rem;
-            margin: 10px 0;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
+        header h1 { font-size: 3rem; margin: 10px 0; text-transform: uppercase; letter-spacing: 2px; }
+        header p.title { font-size: 1.4rem; color: var(--light-gray); font-weight: 300; }
 
-        header p.title {
-            font-size: 1.5rem;
-            font-weight: 300;
-            color: var(--light-gray);
-            letter-spacing: 1px;
-        }
-
-        /* --- Container --- */
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
         section { padding: 60px 0; }
-
         .section-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             text-transform: uppercase;
             border-bottom: 3px solid var(--dark-header);
             display: inline-block;
             margin-bottom: 40px;
-            letter-spacing: 1px;
         }
 
-        /* --- Progress Bars (المؤثرات الجديدة) --- */
+        /* --- Progress Bars --- */
         .progress-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            text-align: center;
-            margin-top: 30px;
-        }
-
-        .progress-box {
-            background: var(--light-gray);
-            padding: 20px;
-            border-radius: 10px;
-            position: relative;
-        }
-
-        .bar-outer {
-            background: #e0e0e0;
-            height: 15px;
-            border-radius: 10px;
-            margin: 15px 0;
-            overflow: hidden;
-        }
-
-        .bar-inner {
-            background: var(--dark-header);
-            height: 100%;
-            width: 0; /* تتحرك بالجافاسكريبت */
-            transition: width 1.5s cubic-bezier(0.1, 0, 0.2, 1);
-        }
-
-        .percent-text { font-weight: 700; font-size: 1.2rem; }
-
-        /* --- Skills Grid --- */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-
-        .skill-card {
-            border-left: 5px solid var(--dark-header);
-            padding: 20px;
-            background: #f9f9f9;
-            border-radius: 0 10px 10px 0;
-        }
-
-        .skill-card h3 { margin-top: 0; color: var(--dark-header); }
-
-        /* --- Contact Section --- */
-        #contact {
-            background: var(--light-gray);
-            text-align: center;
-            padding: 80px 20px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 30px;
-            margin-top: 30px;
         }
+        .progress-box { background: var(--accent-gray); padding: 20px; border-radius: 8px; }
+        .bar-outer { background: #ddd; height: 12px; border-radius: 10px; margin: 15px 0; overflow: hidden; }
+        .bar-inner { background: var(--dark-header); height: 100%; width: 0; transition: width 1.5s ease; }
 
-        .info-item {
+        /* --- Certifications System (Updated) --- */
+        #certifications { text-align: center; background: var(--accent-gray); border-radius: 15px; }
+        .cert-btn {
+            background-color: var(--dark-header);
+            color: white;
+            padding: 15px 35px;
             font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             font-weight: 600;
-            color: var(--dark-header);
-            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
+        .cert-btn:hover { background: #000; transform: scale(1.05); }
 
-        .info-item i { margin-right: 10px; }
-
-        footer {
-            background: var(--dark-header);
-            color: var(--light-gray);
-            text-align: center;
-            padding: 30px;
+        #cert-list {
+            display: none; /* مخفي افتراضياً */
+            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            text-align: left;
         }
+        #cert-list.visible { display: grid; }
+        .cert-item { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 8px; 
+            display: flex; 
+            align-items: center; 
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+        .cert-icon { font-size: 1.8rem; color: var(--dark-header); margin-right: 15px; }
 
-        /* Animation Trigger */
-        .reveal { opacity: 0; transform: translateY(30px); }
+        /* --- Contact --- */
+        #contact { background: var(--dark-header); color: white; text-align: center; }
+        .contact-links { display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-top: 20px; }
+        .contact-links a { color: var(--light-gray); text-decoration: none; font-size: 1.1rem; }
+        .contact-links a:hover { color: white; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
         .active { opacity: 1; transform: translateY(0); }
-
     </style>
 </head>
-<body onload="animateBars()">
+<body>
 
 <header>
     <div class="container">
-        <img src="Ahmed.jpg" alt="Ahmed Nasser" class="profile-pic">
+        <img src="Ahmed.jpg" alt="Ahmed Nasser" class="profile-pic" onerror="this.src='https://via.placeholder.com/200?text=Ahmed+Nasser'">
         <h1>Ahmed Nasser</h1>
         <p class="title">Senior Data Analyst</p>
     </div>
@@ -177,67 +125,44 @@
 
 <div class="container">
     <section class="reveal">
-        <h2 class="section-title">Summary</h2>
-        <p style="font-size: 1.2rem; color: #555;">
-            Results-driven Data Analyst with 3+ years of experience in transforming complex data into actionable business insights. 
-            Proficient in SQL, Power BI, and Advanced Excel, with a strong focus on Python for automation and data manipulation.
-        </p>
+        <h2 class="section-title">Professional Summary</h2>
+        <p>Results-driven Data Analyst with 3+ years of experience. Proficient in SQL, Power BI, and Advanced Excel, with a strong focus on Python for automation and building data-driven solutions.</p>
     </section>
 
     <section class="reveal">
-        <h2 class="section-title">Progress & Proficiency</h2>
+        <h2 class="section-title">Technical Progress</h2>
         <div class="progress-container">
             <div class="progress-box">
-                <span class="percent-text">95%</span>
+                <strong>SQL, Excel & Power BI</strong> <span style="float:right">95%</span>
                 <div class="bar-outer"><div class="bar-inner" data-width="95%"></div></div>
-                <strong>SQL, Excel, Power BI</strong>
             </div>
             <div class="progress-box">
-                <span class="percent-text">90%</span>
+                <strong>Data Analysis</strong> <span style="float:right">90%</span>
                 <div class="bar-outer"><div class="bar-inner" data-width="90%"></div></div>
-                <strong>Data Analysis</strong>
             </div>
             <div class="progress-box">
-                <span class="percent-text">70%</span>
+                <strong>Python Programming</strong> <span style="float:right">70%</span>
                 <div class="bar-outer"><div class="bar-inner" data-width="70%"></div></div>
-                <strong>Python</strong>
             </div>
         </div>
     </section>
 
-    <section class="reveal">
-        <h2 class="section-title">Technical Skills</h2>
-        <div class="skills-grid">
-            <div class="skill-card">
-                <h3><i class="fas fa-broom"></i> ETL & Data Cleaning</h3>
-                <p>Refining and ensuring accuracy of large datasets for reliable reporting.</p>
+    <section id="certifications" class="reveal">
+        <h2 class="section-title">Certifications</h2><br>
+        <button class="cert-btn" onclick="toggleCerts()">Show Professional Certifications</button>
+        
+        <div id="cert-list">
+            <div class="cert-item">
+                <i class="fas fa-award cert-icon"></i>
+                <div><strong>Google Data Analytics</strong><p>Coursera Professional Certificate</p></div>
             </div>
-            <div class="skill-card">
-                <h3><i class="fas fa-brain"></i> Problem Solving & Logic</h3>
-                <p>Strong analytical thinking and tool building for optimized workflow efficiency.</p>
+            <div class="cert-item">
+                <i class="fas fa-award cert-icon"></i>
+                <div><strong>Microsoft Power BI</strong><p>Data Analyst Associate</p></div>
             </div>
-            <div class="skill-card">
-                <h3><i class="fas fa-project-diagram"></i> Data Visualization</h3>
-                <p>Expert in Power BI, Tableau, and creating actionable insights via dashboards.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="reveal">
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
-            <div>
-                <h2 class="section-title">Education</h2>
-                <p><strong>New Assiut Technological University</strong><br>
-                Faculty of Industry and Energy Technology<br>
-                Graduation: 2027-2028 | Grade: Excellent with Honors</p>
-            </div>
-            <div>
-                <h2 class="section-title">Certifications</h2>
-                <ul style="list-style: none; padding: 0;">
-                    <li><i class="fas fa-check-circle"></i> Google Data Analytics Professional</li>
-                    <li><i class="fas fa-check-circle"></i> Microsoft Certified: Power BI Analyst</li>
-                    <li><i class="fas fa-check-circle"></i> Python for Data Science (W3Schools)</li>
-                </ul>
+            <div class="cert-item">
+                <i class="fas fa-award cert-icon"></i>
+                <div><strong>Python for Data Science</strong><p>W3Schools Certified</p></div>
             </div>
         </div>
     </section>
@@ -245,47 +170,45 @@
 
 <section id="contact">
     <div class="container">
-        <h2 class="section-title">Contact</h2>
-        <div class="contact-info">
-            <a href="tel:+201031744968" class="info-item"><i class="fas fa-phone"></i> +20-103-174-4968</a>
-            <a href="mailto:ahmed.nasser.badri.sayed@gmail.com" class="info-item"><i class="fas fa-envelope"></i> ahmed.nasser.badri.sayed@gmail.com</a>
-            <span class="info-item"><i class="fas fa-map-marker-alt"></i> Sadat City, Monufia, Egypt</span>
+        <h2>Get In Touch</h2>
+        <div class="contact-links">
+            <a href="mailto:ahmed.nasser.badri.sayed@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+            <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <span><i class="fas fa-phone"></i> +20-103-174-4968</span>
         </div>
     </div>
 </section>
 
-<footer>
-    <p>&copy; 2026 Ahmed Nasser | Professional Portfolio</p>
-</footer>
-
 <script>
-    // أنيميشن عداد المهارات
-    function animateBars() {
-        const bars = document.querySelectorAll('.bar-inner');
-        bars.forEach(bar => {
-            const width = bar.getAttribute('data-width');
-            bar.style.width = width;
+    // وظيفة إظهار وإخفاء الشهادات
+    function toggleCerts() {
+        const list = document.getElementById('cert-list');
+        const btn = document.querySelector('.cert-btn');
+        if (list.classList.contains('visible')) {
+            list.classList.remove('visible');
+            btn.innerHTML = "Show Professional Certifications";
+        } else {
+            list.classList.add('visible');
+            btn.innerHTML = "Hide Certifications";
+        }
+    }
+
+    // أنيميشن الأشرطة عند السكرول
+    function handleScroll() {
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 100) {
+                el.classList.add('active');
+                // تفعيل الأشرطة داخل السكشن الظاهر
+                const bars = el.querySelectorAll('.bar-inner');
+                bars.forEach(bar => bar.style.width = bar.getAttribute('data-width'));
+            }
         });
     }
 
-    // أنيميشن ظهور العناصر عند السكرول
-    window.addEventListener('scroll', () => {
-        const reveals = document.querySelectorAll('.reveal');
-        for (let i = 0; i < reveals.length; i++) {
-            const windowHeight = window.innerHeight;
-            const revealTop = reveals[i].getBoundingClientRect().top;
-            const revealPoint = 150;
-            if (revealTop < windowHeight - revealPoint) {
-                reveals[i].classList.add('active');
-            }
-        }
-    });
-
-    // تفعيل أول سيكشن تلقائياً
-    window.onload = () => {
-        animateBars();
-        document.querySelector('.reveal').classList.add('active');
-    };
+    window.addEventListener('scroll', handleScroll);
+    window.onload = handleScroll; // لتفعيل السكشن الأول عند التحميل
 </script>
 
 </body>
